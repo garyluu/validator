@@ -1,4 +1,4 @@
-## Tool registration schema status
+## Tool Registry Service Validation Status
 
 ### Dockstore
 
