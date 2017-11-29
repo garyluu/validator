@@ -10,8 +10,9 @@ env:
 install:
   # Add Godeps dependencies to GOPATH and PATH
   - go get -u github.com/NYTimes/openapi2proto/cmd/openapi2proto
-  - sudo apt-get install unzip python
+  - sudo apt-get install unzip python python-pip
   - go get -u github.com/golang/protobuf/protoc-gen-go
+  - pip install ruamel.yaml
   - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
   - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
   - export PROTOC_ZIP=protoc-3.3.0-linux-x86_64.zip
