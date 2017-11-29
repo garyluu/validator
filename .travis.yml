@@ -26,12 +26,14 @@ script:
   - sed -i '/package trs;/d' $PROTOFILE
   - sed -e s/trsService/trs/g -i $PROTOFILE
   - protoc -I. -I$GOPATH/src -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:. $PROTOFILE
+  - protoc -I. -I$GOPATH/src -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:$TRAVIS_BUILD_DIR $PROTOFILE
+  - ls
+  - ls $TRAVIS_BUILD_DIR
 
 deploy:
-+  provider: releases
-+  api_key:
-+    secure: $api_key
-+  file: GA4GH.swagger.json
-+  skip_cleanup: true
-+  on:
-+    tags: true
+  provider: releases
+  api_key: $api_key
+  file: trs.swagger.json
+  skip_cleanup: true
+  on:
+    tags: true
