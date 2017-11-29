@@ -1,5 +1,12 @@
 ## Tool Registry Service Validation Status
 
+### Validation Server Health
+See http://142.1.177.94:5000/health_check to check its health.
+
+### Validation Server Environment
+See http://142.1.177.94:5000/environment to see the environment it is running on.
+
+###
 | Service       | Status        |
 | ------------- |---------------|
 | Dockstore     | [![Build Status](http://142.1.177.94:5000/trs/validator?url=https://dockstore.org:8443)](http://142.1.177.94:5000/trs/validator/debug?url=https://dockstore.org:8443) | 
