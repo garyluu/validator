@@ -31,10 +31,9 @@ script:
   - ls $TRAVIS_BUILD_DIR
 
 deploy:
--  provider: releases
--  api_key:
--    secure: $api_key
--  file: GA4GH.swagger.json
--  skip_cleanup: true
--  on:
--    tags: true
+  provider: releases
+  api_key: $api_key
+  file: GA4GH.swagger.json
+  skip_cleanup: true
+  on:
+    tags: true
