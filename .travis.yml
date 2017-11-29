@@ -8,16 +8,16 @@ env:
     - WEBSERVICE_VERSION="1.3.0-rc.0"
     - PROTOFILE="trs.proto"
     - SWAGGERFILE="ga4gh-tool-discovery.yaml"
-
+addons:
+  apt:
+    packages:
+      - unzip
 install:
   # Add Godeps dependencies to GOPATH and PATH
   - go get -u github.com/NYTimes/openapi2proto/cmd/openapi2proto
-  - python --version
-  - sudo apt-get install unzip python python-pip
   - go get -u github.com/golang/protobuf/protoc-gen-go
   - python --version
   - pip list
-  - pip install ruamel.yaml
   - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
   - go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
   - export PROTOC_ZIP=protoc-3.5.0-linux-x86_64.zip
@@ -33,5 +33,6 @@ script:
   - sed -i '/package trs;/d' $PROTOFILE
   - sed -e s/trsService/trs/g -i $PROTOFILE
   - protoc -I. -I$GOPATH/src -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:. $PROTOFILE
+  - pip install ruamel.yaml
   - python compareSwaggerYaml.py $SWAGGERFILE trs.swagger.json
 
