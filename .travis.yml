@@ -15,7 +15,7 @@ addons:
       - unzip
 install:
   # Add Godeps dependencies to GOPATH and PATH
-  - wget https://github.com/ga4gh/tool-registry-schemas/blob/feature/trsv_changes/src/main/resources/swagger/ga4gh-tool-discovery.yaml
+  - wget https://raw.githubusercontent.com/ga4gh/tool-registry-schemas/feature/trsv_changes/src/main/resources/swagger/ga4gh-tool-discovery.yaml
   - go get -u github.com/NYTimes/openapi2proto/cmd/openapi2proto
   - go get -u github.com/golang/protobuf/protoc-gen-go
   - python --version
