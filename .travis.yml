@@ -38,3 +38,13 @@ script:
 before_install:
 - openssl aes-256-cbc -K $encrypted_1c6d8bbd9c6b_key -iv $encrypted_1c6d8bbd9c6b_iv
   -in github_deploy_key.enc -out github_deploy_key -d
+after_success:
+  - eval "$(ssh-agent)"
+  - chmod 600 github_deploy_key 
+  - ssh-add github_deploy_key
+  - git checkout -B master
+  - git add trs.proto
+  - git commit -m --allow-empty -m "Protobuf changed"
+  - echo "Pushing changes"
+  - git push git@github.com:garyluu/validator master
+  
