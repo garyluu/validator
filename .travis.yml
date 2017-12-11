@@ -42,9 +42,9 @@ after_success:
   - eval "$(ssh-agent)"
   - chmod 600 github_deploy_key 
   - ssh-add github_deploy_key
-  - git checkout -B master
+  - git checkout -B $(TRAVIS_BRANCH)
   - git add trs.proto
   - git commit -m --allow-empty -m "Protobuf changed"
   - echo "Pushing changes"
-  - git push git@github.com:garyluu/validator master
+  - git push git@github.com:garyluu/validator $(TRAVIS_BRANCH)
   
